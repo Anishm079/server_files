@@ -1,0 +1,51 @@
+import { Button } from "@mui/material";
+import React from "react";
+
+function DirectionSummery({ handleReset, directionSummery, directionData,width }) {
+  return (
+    <div
+      className="position-absolute bottom-0 left-0 bg-white text-dark border rounded m-2 px-2"
+      style={{ zIndex: 1000003, width:width ?? 450 }}
+    >
+      <div className="m-2">
+        <div className="d-flex flex-column fs-6 fw-semibold">
+          <div className="d-flex flex-row align-items-center justify-content-between">
+            <div className="d-flex flex-column align-items-start">
+              <span className="py-1">
+                Location A:{" "}
+                {directionData?.A?.name +
+                  " ( " +
+                  (directionData?.A?.user_type || "agent") +
+                  " ) "}
+              </span>
+              <span>
+                Location B:{" "}
+                {directionData?.B?.name +
+                  " ( " +
+                  (directionData?.B?.user_type || "agent") +
+                  " ) "}
+              </span>
+            </div>
+            <div>
+              <Button
+                className="mt-2 rounded-pill"
+                variant="contained"
+                color="secondary"
+                onClick={handleReset}
+              >
+                Reset
+              </Button>
+            </div>
+          </div>
+          <span className="fs-6 fw-normal text-capitalize">
+            Distance: {directionSummery?.distance} &nbsp;&nbsp; |&nbsp;&nbsp;
+            Duration: {directionSummery?.duration} &nbsp;&nbsp;|&nbsp;&nbsp;
+            Mode : Driving
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default DirectionSummery;
